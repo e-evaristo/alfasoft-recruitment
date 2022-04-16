@@ -11,6 +11,8 @@ class Contact extends Model
     use SoftDeletes;
     use HasFactory;
 
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'name', 'contact', 'email',
     ];

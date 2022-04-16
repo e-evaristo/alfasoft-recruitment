@@ -13,4 +13,11 @@ class ContactsController extends Controller
         $contacts = Contact::paginate(10);
         return view('app.contacts.index', ['contacts' => $contacts]);
     }
+
+    public function delete(Contact $contact)
+    {
+        $contact->delete();
+        return redirect()->route('dashboard')->with('message', 'Contact deleted successfully');
+    }
+
 }
