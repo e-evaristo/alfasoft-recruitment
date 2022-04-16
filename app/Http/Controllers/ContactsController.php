@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactStoreRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
+use App\Services\ContactService;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
+    private ContactService $service;
+
+    public function __construct(ContactService $service)
+    {
+        $this->service = $service;
+    }
 
     public function index()
     {
-        $contacts = Contact::paginate(10);
+        $contacts = $this->service->list();
         return view('app.contacts.index', ['contacts' => $contacts]);
     }
 
@@ -23,7 +30,7 @@ class ContactsController extends Controller
 
     public function delete(Contact $contact)
     {
-        $contact->delete();
+        $this->service->destroy($contact);
         return redirect()->route('dashboard')->with('message', 'Contact deleted successfully');
     }
 
@@ -35,7 +42,7 @@ class ContactsController extends Controller
     public function update(ContactUpdateRequest $request, Contact $contact)
     {
         $validated = $request->validated();
-        $contact->update($validated);
+        $this->service->update($contact, $validated);
         return redirect()->route('dashboard')->with('message', 'Contact updated successfully');
     }
 
@@ -47,7 +54,7 @@ class ContactsController extends Controller
     public function store(ContactStoreRequest $request)
     {
         $validated = $request->validated();
-        Contact::create($validated);
+        $this->service->create($validated);
         return redirect()->route('dashboard')->with('message', 'Contact created successfully');
     }
 
