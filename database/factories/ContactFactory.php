@@ -15,7 +15,7 @@ class ContactFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'contact' => $this->faker->unique()->randomNumber($nbDigits = 9, $strict = true),
+            'contact_number' => $this->faker->unique()->randomNumber($nbDigits = 9, $strict = true),
             'email' => $this->faker->unique()->safeEmail,
         ];
     }

@@ -24,17 +24,15 @@
 
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                             <div class="p-4">
-                                <label for="table-search" class="sr-only">Search</label>
                                 <div class="relative mt-1">
-                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
+                                    <div class="flex items-center justify-between">
+                                        <a href="{{ route('contacts.create') }}" class="button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            {{__('Create New')}}
+                                        </a>
                                     </div>
-                                    <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search name">
                                 </div>
                             </div>
                             <table class="w-full text-sm text-left text-gray-500">
@@ -68,19 +66,19 @@
 
                                         <th scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {{ $contact->id }}
+                                            <a href="{{ route('contacts.show', $contact) }}">{{ $contact->id }}</a>
                                         </th>
                                         <td class="px-6 py-4">
-                                            {{ $contact->name }}
+                                            <a href="{{ route('contacts.show', $contact) }}"><span class="underline">{{ $contact->name }}</span></a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $contact->contact }}
+                                            <a href="{{ route('contacts.show', $contact) }}">{{ $contact->contact_number }}</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $contact->email }}
+                                            <a href="{{ route('contacts.show', $contact) }}">{{ $contact->email }}</a>
                                         </td>
                                         <td class="px-6 py-4 text-center">
-                                            <a href="#" class="text-center">
+                                            <a href="{{ route('contacts.edit', $contact) }}" class="text-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                 </svg>
