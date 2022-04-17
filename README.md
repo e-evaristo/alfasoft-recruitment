@@ -11,12 +11,14 @@ Teste de aplicação com Laravel e TailwindCSS
 04. `$ cp .env.example .env`
 05. `$ php artisan key:generate`
 06. `$ php artisan storage:link`
-07. Criar um novo banco de dados MySQL
-08. Alterar as credenciais de acesso ao DB no arquivo `.env`
-09. `$ php artisan migrate --seed`
-10. `$ php artisan serve`
-11. Visitar: `http://127.0.0.1:8000/`
-12. Crie um novo usuário para acessar a aplicação
+07. `$ npm install`
+08. `$ npm run dev`
+09. Criar um novo banco de dados MySQL
+10. Alterar as credenciais de acesso ao DB no arquivo `.env`
+11. `$ php artisan migrate --seed`
+12. `$ php artisan serve`
+13. Visitar: `http://127.0.0.1:8000/`
+14. Crie um novo usuário para acessar a aplicação
 
 
 ## License
