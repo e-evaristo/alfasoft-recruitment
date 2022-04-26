@@ -6,7 +6,8 @@ use App\Models\Contact;
 class ContactService {
 
     public function list() {
-        return auth()->user()->contacts()->orderBy('id','DESC')->paginate(10);
+        //return auth()->user()->contacts()->orderBy('id','DESC')->paginate(10);
+        return Contact::orderBy('id','DESC')->paginate(10);
     }
 
     public function create($data)
