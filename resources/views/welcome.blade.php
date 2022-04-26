@@ -47,7 +47,10 @@
                         <a href="/login" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">Login</a>
                     </div>
                 </div>
-
+                <div class="mt-5 text-gray-500 text-sm">
+                    <p>Usuário 1: admin@email.com / password: password</p>
+                    <p>Usuário 2: user@email.com / password: password</p>
+                </div>
             </section>
         </div>
     </body>

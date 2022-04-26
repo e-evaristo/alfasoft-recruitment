@@ -25,22 +25,26 @@ class ContactsController extends Controller
 
     public function show(Contact $contact)
     {
+        $this->authorize('view', $contact);
         return view('app.contacts.show', ['contact' => $contact]);
     }
 
     public function delete(Contact $contact)
     {
+        $this->authorize('delete', $contact);
         $this->service->destroy($contact);
         return redirect()->route('dashboard')->with('message', 'Contact deleted successfully');
     }
 
     public function edit(Contact $contact)
     {
+        $this->authorize('view', $contact);
         return view('app.contacts.edit', ['contact' => $contact]);
     }
 
     public function update(ContactUpdateRequest $request, Contact $contact)
     {
+        $this->authorize('update', $contact);
         $validated = $request->validated();
         $this->service->update($contact, $validated);
         return redirect()->route('dashboard')->with('message', 'Contact updated successfully');
