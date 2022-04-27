@@ -10,9 +10,11 @@ trait ContactOwner
     {
         static::addGlobalScope(new OwnerScope);
 
-        static::creating(function ($model) {
-            $model->user_id = auth()->user()->id;
-        });
+        if (auth()->check()) {
+            static::creating(function ($model) {
+                $model->user_id = auth()->user()->id;
+            });
+        }
     }
 
 }
